@@ -1,0 +1,25 @@
+<div class="row flight-search">
+    <form>
+        <div class="col-sm-3">
+            <fieldset class="form-group">
+                <label>From</label>
+                <input #originInput (change)="tripRequest.origin = originInput.value" type="text" class="form-control" placeholder="Enter airport code">
+            </fieldset>
+        </div>
+        <div class="col-sm-3">
+            <fieldset class="form-group">
+                <label>To</label>
+                <input #destinationInput (change)="tripRequest.destination = destinationInput.value" type="text" class="form-control" placeholder="Enter airport code">
+            </fieldset>
+        </div>
+        <div class="col-sm-3">
+            <fieldset class="form-group">
+                <label>When</label>
+                <input #dateInput (change)="date = dateInput.value" type="date" class="form-control" placeholder="Enter date">
+            </fieldset>
+        </div>
+        <div class="col-sm-3">
+            <button (click)="search()" type="button" class="search btn btn-default">Search</button>
+        </div>
+    </form>
+</div>
