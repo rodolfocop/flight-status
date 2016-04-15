@@ -1,8 +1,9 @@
 import 'rxjs/add/operator/map';
 import {Injectable} from 'angular2/core';
 import {Http, Response, Headers, URLSearchParams} from 'angular2/http';
-import {TripRequest} from "../trip-request.interface/trip-request.interface";
+import {TripRequest} from "../../../trip-request.interface/trip-request.interface";
 
+// todo: get api key from backend
 const APIKEY:string = 'AIzaSyCgILgw9s6w_9zPNTTyXN1w6x_9zKsrFEU';
 
 @Injectable()
@@ -12,7 +13,6 @@ export class QpxService {
 
     public getTrip(tripRequest:TripRequest) {
         let url = 'https://www.googleapis.com/qpxExpress/v1/trips/search';
-
         let body = JSON.stringify(tripRequest);
 
         let headers = new Headers();

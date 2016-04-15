@@ -7,7 +7,9 @@ import appComponentStyles from './app.component.css!text'
 @Component({
     selector: 'my-app',
     template: appComponentTeplmate,
-    directives: [[FlightSearchComponent]],
+    directives: [
+        [FlightSearchComponent]
+    ],
     styles: [appComponentStyles],
     providers: []
 })

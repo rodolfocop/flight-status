@@ -1,0 +1,43 @@
+<div class="row">
+    <form>
+        <div class="col-sm-3">
+            <fieldset class="form-group">
+                <label>From</label>
+                <input #originInput
+                       (change)="setOrigin(originInput.value)"
+                       [value]="getOrigin()"
+                       placeholder="Enter airport code" type="text" class="form-control">
+            </fieldset>
+        </div>
+        <div class="col-sm-3">
+            <fieldset class="form-group">
+                <label>To</label>
+                <input #destinationInput
+                       (change)="setDestination(destinationInput.value)"
+                       [value]="getDestination()"
+                       placeholder="Enter airport code" type="text" class="form-control" >
+            </fieldset>
+        </div>
+        <div class="col-sm-3">
+            <fieldset class="form-group">
+                <label>When</label>
+                <input #dateInput
+                       (change)="setDate(dateInput.value)"
+                       [value]="getCurrentDate()"
+                       placeholder="Enter date" type="date" class="form-control">
+            </fieldset>
+        </div>
+        <div class="col-sm-1">
+            <fieldset class="form-group">
+                <label>Solutions</label>
+                <input #solutionsInput
+                       (change)="setSolutions(solutionsInput)"
+                       [value]="getSolutions()"
+                       placeholder="Enter solutions count" type="text" class="form-control">
+            </fieldset>
+        </div>
+        <div class="col-sm-2">
+            <button (click)="search()" type="button" class="search btn btn-default">Search</button>
+        </div>
+    </form>
+</div>
