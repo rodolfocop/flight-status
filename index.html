@@ -27,10 +27,13 @@
         System.config({
             transpiler: 'typescript',
             typescriptOptions: {emitDecoratorMetadata: true},
-            packages: {app: {defaultExtension: 'js'}},
+            packages: {
+                app: {
+                    defaultExtension: 'js'
+                }
+            },
             map: {
-                text: 'node_modules/system-text/text.js',
-                moment: 'node_modules/moment/moment.js',
+                moment: 'node_modules/moment/moment.js'
             }
         });
         System.import('app/main')
@@ -39,6 +42,6 @@
 </head>
 
 <body>
-<my-app><div class="loader"></div></my-app>
+<app><div class="loader"></div></app>
 </body>
 </html>

@@ -1,27 +1,24 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import moment from 'moment';
 
-import flightSearchFormComponentTemplate from './flight-search-form.component.html!text';
-import flightSearchFormComponentStyle from './flight-search-form.component.css!text'
 import {FlightSearchResultComponent} from "../flight-search-result.component/flight-search-result.component";
 import {QpxService} from "./qpx.service/qpx.service";
 import {TripRequest} from "../../trip-request.interface/trip-request.interface";
+import {TripResponse} from "../../trip-response.interface/trip-response.interface";
 
 
 @Component({
     selector: 'flight-search-form',
-    template: flightSearchFormComponentTemplate,
-    styles: [flightSearchFormComponentStyle],
-    directives: [
-        [FlightSearchResultComponent]
-    ],
+    templateUrl: 'app/app.component/flight-search.component/flight-search-form.component/flight-search-form.component.html',
+    styleUrls: ['app/app.component/flight-search.component/flight-search-form.component/flight-search-form.component.css'],
+    directives: [[FlightSearchResultComponent]],
     providers: [QpxService]
 })
 export class FlightSearchFormComponent {
     constructor(private _qpx:QpxService) {
     }
 
-    @Output('search') searchEmitter:EventEmitter = new EventEmitter();
+    @Output('search') searchEmitter:EventEmitter<TripResponse> = new EventEmitter();
     @Input('request') tripRequest:TripRequest;
 
     public getOrigin() {
@@ -40,9 +37,6 @@ export class FlightSearchFormComponent {
         this.tripRequest.request.slice[0].destination = value;
     }
 
-    public getCurrentDate() {
-        return moment().format('YYYY-MM-DD');
-    }
 
     public setDate(value:string) {
         this.tripRequest.request.slice[0].date = moment(value).format('YYYY-MM-DD');
@@ -60,6 +54,7 @@ export class FlightSearchFormComponent {
         } else {
             input.value = this.tripRequest.request.solutions.toString();
 
+
             alert('Solutions count should be a number');
         }
     }
@@ -76,5 +71,9 @@ export class FlightSearchFormComponent {
                     console.error(error);
                 }
             );
+    }
+
+    public getCurrentDate() {
+        return moment().format('YYYY-MM-DD');
     }
 }

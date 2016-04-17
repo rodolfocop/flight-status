@@ -14,7 +14,6 @@ System.register(['angular2/platform/browser', './app.component/app.component', '
                 http_1 = http_1_1;
             }],
         execute: function() {
-            //noinspection TypeScriptValidateTypes
             browser_1.bootstrap(app_component_1.AppComponent, [http_1.HTTP_PROVIDERS]);
         }
     }

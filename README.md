@@ -1,4 +1,6 @@
-# flight-status
+# Flight status
+
+Flight search using Angular 2 and QPX Express API
 
 ## Install
 

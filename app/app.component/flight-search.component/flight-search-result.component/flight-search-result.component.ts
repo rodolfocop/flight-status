@@ -1,19 +1,15 @@
 import {Component, Input} from 'angular2/core';
 import moment from 'moment';
 
-import flightSearchResultComponentTemplate from './flight-search-result.component.html!text';
-import flightSearchResultComponentStyle from './flight-search-result.component.css!text'
-
-
 @Component({
     selector: 'flight-search-result',
-    template: flightSearchResultComponentTemplate,
-    styles: [flightSearchResultComponentStyle],
+    templateUrl: 'app/app.component/flight-search.component/flight-search-result.component/flight-search-result.component.html',
+    styleUrls: ['app/app.component/flight-search.component/flight-search-result.component/flight-search-result.component.css'],
 })
 export class FlightSearchResultComponent {
     @Input() result;
 
-    findData(origin:Array, value:any) {
+    findData(origin:Array<any>, value:any) {
         return origin.find((elem) => elem.code === value).name;
     }
 }

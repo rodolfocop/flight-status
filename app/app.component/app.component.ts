@@ -1,17 +1,13 @@
 import {Component} from 'angular2/core';
 import {FlightSearchComponent} from './flight-search.component/flight-search.component';
 
-import appComponentTeplmate from './app.component.html!text';
-import appComponentStyles from './app.component.css!text'
-
 @Component({
-    selector: 'my-app',
-    template: appComponentTeplmate,
+    selector: 'app',
     directives: [
         [FlightSearchComponent]
     ],
-    styles: [appComponentStyles],
-    providers: []
+    templateUrl: 'app/app.component/app.component.html',
+    styleUrls: ['app/app.component/app.component.css']
 })
 
 export class AppComponent {
