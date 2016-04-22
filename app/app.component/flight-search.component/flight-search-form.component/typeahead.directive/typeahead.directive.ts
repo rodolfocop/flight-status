@@ -1,11 +1,12 @@
 import {Directive, Input, EventEmitter, ElementRef, DynamicComponentLoader, ComponentRef, OnInit} from 'angular2/core';
 import {TypeaheadContainerComponent} from './typeahead.container.component/typeahead.container.component';
 import {Subject} from 'rxjs/Rx';
+import {QpxService} from "../qpx.service/qpx.service";
 
 
 @Directive({
     selector: 'input[typeahead]',
-    directives: [ElementRef, DynamicComponentLoader],
+    directives: [ElementRef, DynamicComponentLoader, QpxService],
     host: {
         '(keyup)': 'onChange($event)'
     }
@@ -15,7 +16,8 @@ export class TypeaheadDirective implements OnInit {
     public container:ComponentRef;
 
     constructor(private _el:ElementRef,
-                private _loader:DynamicComponentLoader) {
+                private _loader:DynamicComponentLoader,
+                private _qpx:QpxService) {
     }
 
     ngOnInit() {
@@ -31,7 +33,7 @@ export class TypeaheadDirective implements OnInit {
 
     public onChange(event) {
         if (event.target.value) {
-            this.getData(event.target.value)
+            this._qpx.getAirport(event.target.value)
                 .subscribe(
                     (data) => {
                         this.container.instance.suggesiontsObservable.next(data.filter((v) => {

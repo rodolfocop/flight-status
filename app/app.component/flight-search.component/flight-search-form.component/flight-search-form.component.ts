@@ -23,10 +23,6 @@ export class FlightSearchFormComponent {
     constructor(private _qpx:QpxService) {
     }
 
-    public getAirportGetter() {
-        return this._qpx.getAirport.bind(this._qpx);
-    }
-
     public getOrigin() {
         return this.tripRequest.request.slice[0].origin;
     }
