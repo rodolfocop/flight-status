@@ -17,14 +17,13 @@ import {TripResponse} from "../../trip-response.interface/trip-response.interfac
     providers: [QpxService]
 })
 export class FlightSearchFormComponent {
+    @Output('search') searchEmitter:EventEmitter<TripResponse> = new EventEmitter();
+    @Input('request') tripRequest:TripRequest;
 
     constructor(private _qpx:QpxService) {
     }
 
-    @Output('search') searchEmitter:EventEmitter<TripResponse> = new EventEmitter();
-    @Input('request') tripRequest:TripRequest;
-
-    public getAirportFunction() {
+    public getAirportGetter() {
         return this._qpx.getAirport.bind(this._qpx);
     }
 

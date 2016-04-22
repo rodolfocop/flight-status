@@ -1,67 +1,56 @@
-import {Directive, Input, EventEmitter, ElementRef, DynamicComponentLoader, ComponentRef, OnInit, OnDestroy, ChangeDetectorRef} from 'angular2/core';
-
+import {Directive, Input, EventEmitter, ElementRef, DynamicComponentLoader, ComponentRef, OnInit} from 'angular2/core';
 import {TypeaheadContainerComponent} from './typeahead.container.component/typeahead.container.component';
+import {Subject} from 'rxjs/Rx';
+
 
 @Directive({
     selector: 'input[typeahead]',
-    prividers: [ElementRef, DynamicComponentLoader],
+    directives: [ElementRef, DynamicComponentLoader],
     host: {
         '(keyup)': 'onChange($event)'
     }
 })
 export class TypeaheadDirective implements OnInit {
-    private _nativeElement:HTMLInputElement;
-    private _intervalId:number;
-    private _componentReference;
-
     @Input('typeahead') getData:Function;
-
-    public suggestions:any[];
-
-    ngOnInit() {
-        //noinspection TypeScriptValidateTypes
-        this._loader.loadNextToLocation(TypeaheadContainerComponent, this._el)
-            .then((compRef:ComponentRef) => {
-                this._componentReference = compRef;
-                this._intervalId = setInterval(() => {
-                    compRef.instance.suggestions = this.suggestions;
-                }, 100);
-
-                compRef.instance.selectOption = new EventEmitter();
-                compRef.instance.selectOption.subscribe((value:any) => {
-                    this._nativeElement.value = value.code;
-                    this._fireEvent(this._nativeElement, 'change');
-                    compRef.instance.hide();
-                });
-            });
-    }
+    public container:ComponentRef;
 
     constructor(private _el:ElementRef,
                 private _loader:DynamicComponentLoader) {
-        this._nativeElement = _el.nativeElement;
+    }
+
+    ngOnInit() {
+        this._loader.loadNextToLocation(<any>TypeaheadContainerComponent, this._el)
+            .then((compRef:ComponentRef) => {
+                this.container = compRef;
+                this.container.instance.selectOption.subscribe(
+                    (data) => this.setCode(data),
+                    (error) => console.error(error)
+                );
+            });
     }
 
     public onChange(event) {
-        this._componentReference.instance.show();
-        this.getData(event.target.value)
-            .subscribe(
-                (data) => {
-                    this.suggestions = data.filter((v) => {
-                        return v.name;
-                    })
-                },
-                (error) => {
-                    console.log(error)
-                }
-            )
-    }
-
-    private _fireEvent(obj, evt) {
-        if (document.createEvent) {
-            var evObj = document.createEvent('MouseEvents');
-            evObj.initEvent(evt, true, false);
-            obj.dispatchEvent(evObj);
+        if (event.target.value) {
+            this.getData(event.target.value)
+                .subscribe(
+                    (data) => {
+                        this.container.instance.suggesiontsObservable.next(data.filter((v) => {
+                            return v.name;
+                        }));
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                )
+        } else {
+            this.container.instance.suggesiontsObservable.next([]);
         }
     }
 
+    public setCode(data:any) {
+        let event = document.createEvent('Event');
+        event.initEvent('change', true, false);
+        this._el.nativeElement.value = data.code;
+        this._el.nativeElement.dispatchEvent(event);
+    }
 }

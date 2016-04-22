@@ -10,4 +10,4 @@ Flight search using Angular 2 and QPX Express API
 
 `npm start`
 
-Server will be listen to the [http://localhost:3000](http://localhost:3000)
+Server will be listening to the [http://localhost:3000](http://localhost:3000)
