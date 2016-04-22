@@ -9,7 +9,7 @@ import moment from 'moment';
 export class FlightSearchResultComponent {
     @Input() result;
 
-    findData(origin:Array<any>, value:any) {
+    parseData(origin:Array<any>, value:any) {
         return origin.find((elem) => elem.code === value).name;
     }
 }

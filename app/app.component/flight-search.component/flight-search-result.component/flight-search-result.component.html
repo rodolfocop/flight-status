@@ -11,14 +11,14 @@
                      class="col-sm-4">
                     <h4>Segment #{{i + 1}}:</h4>
                     <div>Duration: {{segment.duration}}</div>
-                    <div>Flight: {{findData(result.trips.data.carrier, segment.flight.carrier)}}
+                    <div>Flight: {{parseData(result.trips.data.carrier, segment.flight.carrier)}}
                         (#{{segment.flight.number}})
                     </div>
                     <div>Cabin: {{segment.cabin}}</div>
                     <!--<div>Booking Code: {{segment.bookingCode}} ({{segment.bookingCodeCount}})</div>-->
                     <div *ngFor="#leg of segment.leg; #i = index">
                         <h5>Leg #{{i + 1}}</h5>
-                        <div>Aircraft: {{findData(result.trips.data.aircraft, leg.aircraft)}}</div>
+                        <div>Aircraft: {{parseData(result.trips.data.aircraft, leg.aircraft)}}</div>
                         <div>Arrival time: {{leg.arrivalTime}}</div>
                         <div>Departure time: {{leg.departureTime}}</div>
                         <div>Origin: {{leg.origin}}, Destination: {{leg.destination}}</div>
@@ -35,7 +35,7 @@
                 <div *ngFor="#fare of pricing.fare; #i = index"
                      class="col-sm-4">
                     <h4>Fare #{{i + 1}}</h4>
-                    <div>Carrier: {{findData(result.trips.data.carrier ,fare.carrier)}}</div>
+                    <div>Carrier: {{parseData(result.trips.data.carrier ,fare.carrier)}}</div>
                     <div>Origin: {{fare.origin}}, Destination: {{fare.destination}}</div>
                     <div>Basis code: {{fare.basisCode}}</div>
                 </div>
