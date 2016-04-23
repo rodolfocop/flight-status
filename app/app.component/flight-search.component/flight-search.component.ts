@@ -37,7 +37,7 @@ export class FlightSearchComponent {
     };
     public searchResults:TripResponse;
 
-    public getResult(value:TripResponse) {
+    public setResult(value:TripResponse) {
         this.searchResults = value;
     }
 }

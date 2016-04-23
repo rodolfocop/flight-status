@@ -1,10 +1,11 @@
-.container {
-  position: relative;
-  left: -15px;
-  z-index: auto;
-  background-color: white;
+.tyepeahead-container {
+  position: fixed;
+  z-index: 100;
+  display: inline-block;
+  width: 100%;
 }
-.container .suggestion {
+.tyepeahead-container .suggestion {
+  background-color: white;
   display: inline-block;
   border: 1px solid black;
   padding: 5px;
