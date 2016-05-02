@@ -4,10 +4,10 @@
             <fieldset class="form-group">
                 <label>From</label>
                 <input #origin="ngForm"
+                       [(ngModel)]="tripRequest.request.slice[0].origin"
                        ngControl="origin"
                        required
                        pattern="[A-Z]{3}"
-                       (change)="setOrigin(origin.value)"
                        placeholder="Airport code" type="text" class="form-control">
                 <div [hidden]="origin.valid || origin.pristine" class="alert alert-danger">
                     Origin is invalid
@@ -18,10 +18,10 @@
             <fieldset class="form-group">
                 <label>To</label>
                 <input #destination="ngForm"
+                       [(ngModel)]="tripRequest.request.slice[0].destination"
                        ngControl="destination"
                        required
                        pattern="[A-Z]{3}"
-                       (change)="setDestination(destination.value)"
                        placeholder="Airport code" type="text" class="form-control">
                 <div [hidden]="destination.valid || destination.pristine" class="alert alert-danger">
                     Destination is invalid
@@ -32,11 +32,10 @@
             <fieldset class="form-group">
                 <label>When</label>
                 <input #date="ngForm"
+                       [(ngModel)]="tripRequest.request.slice[0].date"
                        ngControl="date"
                        required
                        pattern="\d{4}\-\d{2}\-\d{2}"
-                       (change)="setDate(date.value)"
-                       [value]="getCurrentDate()"
                        placeholder="Date" type="date" class="form-control">
                 <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
                     Date is invalid
@@ -47,10 +46,10 @@
             <fieldset class="form-group">
                 <label>Solutions</label>
                 <input #solutions="ngForm"
+                       [(ngModel)]="tripRequest.request.solutions"
                        ngControl="solutions"
                        required
                        pattern="\d+"
-                       (change)="setSolutions(solutions)"
                        placeholder="Qty." type="text" class="form-control">
                 <div [hidden]="solutions.valid || solutions.pristine" class="alert alert-danger">
                     Solutions quantity invalid

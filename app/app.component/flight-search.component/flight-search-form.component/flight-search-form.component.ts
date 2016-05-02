@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
 import moment from 'moment';
 
 import {FlightSearchResultComponent} from "../flight-search-result.component/flight-search-result.component";
@@ -20,37 +20,6 @@ export class FlightSearchFormComponent {
     @Input('request') tripRequest:TripRequest;
 
     constructor(private _qpx:QpxService) {
-    }
-
-    public getOrigin() {
-        return this.tripRequest.request.slice[0].origin;
-    }
-
-    public setOrigin(value:string) {
-        this.tripRequest.request.slice[0].origin = value;
-    }
-
-    public getDestination() {
-        return this.tripRequest.request.slice[0].destination;
-    }
-
-    public setDestination(value:string) {
-        this.tripRequest.request.slice[0].destination = value;
-    }
-
-    public setDate(value:string) {
-        this.tripRequest.request.slice[0].date = moment(value).format('YYYY-MM-DD');
-    }
-
-    public getSolutions() {
-        return this.tripRequest.request.solutions;
-    }
-
-    public setSolutions(input:HTMLInputElement) {
-        let solutions = parseInt(input.value, 10);
-        if (solutions) {
-            this.tripRequest.request.solutions = solutions;
-        }
     }
 
     public search() {
