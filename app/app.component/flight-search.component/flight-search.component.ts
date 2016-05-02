@@ -15,6 +15,8 @@ import {TripResponse} from "../trip-response.interface/trip-response.interface";
     ],
 })
 export class FlightSearchComponent {
+    public searchError;
+
     public defaultTripRequest:TripRequest = {
         "request": {
             "slice": [
@@ -37,7 +39,15 @@ export class FlightSearchComponent {
     };
     public searchResults:TripResponse;
 
-    public setResult(value:TripResponse) {
-        this.searchResults = value;
+    public setResult(result:TripResponse) {
+        this.searchResults = result;
+    }
+
+    public setError(error) {
+        if (error) {
+            this.searchError = JSON.parse(error._body).error;
+        } else {
+            this.searchError = null;
+        }
     }
 }

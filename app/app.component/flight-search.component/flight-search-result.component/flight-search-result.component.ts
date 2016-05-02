@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, OnInit} from 'angular2/core';
 import moment from 'moment';
 
 @Component({
@@ -8,6 +8,7 @@ import moment from 'moment';
 })
 export class FlightSearchResultComponent {
     @Input() result;
+    @Input() error;
 
     parseData(origin:Array<any>, value:any) {
         return origin.find((elem) => elem.code === value).name;

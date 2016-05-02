@@ -44,4 +44,6 @@
     </div>
 </div>
 
-<div *ngIf="result === null" class="loader">Loading...</div>
+<div *ngIf="error">{{error.message}}</div>
+
+<div *ngIf="result === null && error === null" class="loader">Loading...</div>

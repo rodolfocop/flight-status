@@ -1,2 +1,2 @@
-<flight-search-form [request]="defaultTripRequest" (search)="setResult($event)"></flight-search-form>
-<flight-search-result [result]="searchResults"></flight-search-result>
+<flight-search-form [request]="defaultTripRequest" (search)="setResult($event)" (error)="setError($event)"></flight-search-form>
+<flight-search-result [result]="searchResults" [error]="searchError"></flight-search-result>

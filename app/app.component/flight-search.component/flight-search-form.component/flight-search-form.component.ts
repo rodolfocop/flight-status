@@ -16,6 +16,7 @@ import {TripResponse} from "../../trip-response.interface/trip-response.interfac
 })
 export class FlightSearchFormComponent {
     @Output('search') searchEmitter:EventEmitter<TripResponse> = new EventEmitter();
+    @Output('error') errorEmitter:EventEmitter<any> = new EventEmitter();
     @Input('request') tripRequest:TripRequest;
 
     constructor(private _qpx:QpxService) {
@@ -53,15 +54,18 @@ export class FlightSearchFormComponent {
     }
 
     public search() {
+        this.errorEmitter.emit(null);
         this.searchEmitter.emit(null);
         this._qpx
             .getTrip(this.tripRequest)
             .subscribe(
                 (data) => {
                     this.searchEmitter.emit(data);
+                    this.errorEmitter.emit(null);
                 },
                 (error) => {
-                    console.error(error);
+                    this.errorEmitter.emit(error);
+                    this.searchEmitter.emit(null);
                 }
             );
     }
