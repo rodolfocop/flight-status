@@ -22,6 +22,10 @@ export class FlightSearchResultComponent {
             this.sortType = type;
     }
 
+    public toDate(s:string) {
+        return new Date(s);
+    }
+
     parseData(origin:Array<any>, value:any) {
         return origin.find((elem) => elem.code === value).name;
     }

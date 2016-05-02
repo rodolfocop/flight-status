@@ -21,10 +21,10 @@
                             </div>
                             <div>Cabin: {{segment.cabin}}</div>
                             <div *ngFor="#leg of segment.leg; #i = index">
-                                <h5>Leg #{{i + 1}}</h5>
+                                <hr>
                                 <div>Aircraft: {{parseData(result.trips.data.aircraft, leg.aircraft)}}</div>
-                                <div>Arrival time: {{leg.arrivalTime}}</div>
-                                <div>Departure time: {{leg.departureTime}}</div>
+                                <div>Arrival time: {{toDate(leg.arrivalTime) | date:'yMMMd Hm'}}</div>
+                                <div>Departure time: {{toDate(leg.departureTime) | date:'yMMMd Hm'}}</div>
                                 <div>Origin: {{leg.origin}}, Destination: {{leg.destination}}</div>
                                 <div>Duration: {{leg.duration}}</div>
                                 <div>Mileage: {{leg.mileage}}</div>
