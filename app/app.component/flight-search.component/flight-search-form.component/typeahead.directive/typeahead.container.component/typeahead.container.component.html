@@ -1,8 +1,0 @@
-<div class="tyepeahead-container" *ngIf="visible">
-    <div *ngFor="#suggestion of suggestions; #i = index" (click)="select(i)">
-        <div class="suggestion">
-            {{suggestion.code}} ({{suggestion.name}} {{suggestion.city_fullname}})
-        </div>
-        <br>
-    </div>
-</div>

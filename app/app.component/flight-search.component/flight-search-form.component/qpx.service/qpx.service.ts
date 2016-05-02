@@ -30,18 +30,4 @@ export class QpxService {
             })
             .map((res:Response) => res.json());
     }
-
-    public getAirport(query:string) {
-        const URL = 'http://www.jetradar.com/autocomplete/places';
-
-        let search = new URLSearchParams();
-        search.set('with_countries', 'true');
-        search.set('q', query);
-
-        return this._http
-            .get(URL, {
-                search: search
-            })
-            .map((res:Response) => res.json());
-    }
 }

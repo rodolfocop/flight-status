@@ -5,7 +5,7 @@
                 <label>From</label>
                 <input #originInput
                        (change)="setOrigin(originInput.value)"
-                       [typeahead]
+                       [value]="getOrigin()"
                        placeholder="Airport code" type="text" class="form-control">
             </fieldset>
         </div>
@@ -14,7 +14,7 @@
                 <label>To</label>
                 <input #destinationInput
                        (change)="setDestination(destinationInput.value)"
-                       [typeahead]
+                       [value]="getDestination()"
                        placeholder="Airport code" type="text" class="form-control">
             </fieldset>
         </div>

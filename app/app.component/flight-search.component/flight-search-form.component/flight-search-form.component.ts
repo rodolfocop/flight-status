@@ -1,8 +1,6 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import moment from 'moment';
 
-import {TypeaheadDirective} from './typeahead.directive/typeahead.directive';
-
 import {FlightSearchResultComponent} from "../flight-search-result.component/flight-search-result.component";
 import {QpxService} from "./qpx.service/qpx.service";
 import {TripRequest} from "../../trip-request.interface/trip-request.interface";
@@ -13,7 +11,7 @@ import {TripResponse} from "../../trip-response.interface/trip-response.interfac
     selector: 'flight-search-form',
     templateUrl: 'app/app.component/flight-search.component/flight-search-form.component/flight-search-form.component.html',
     styleUrls: ['app/app.component/flight-search.component/flight-search-form.component/flight-search-form.component.css'],
-    directives: [[TypeaheadDirective, FlightSearchResultComponent]],
+    directives: [[FlightSearchResultComponent]],
     providers: [QpxService]
 })
 export class FlightSearchFormComponent {

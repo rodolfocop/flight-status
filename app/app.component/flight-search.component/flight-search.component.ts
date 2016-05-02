@@ -19,8 +19,8 @@ export class FlightSearchComponent {
         "request": {
             "slice": [
                 {
-                    "origin": "",
-                    "destination": "",
+                    "origin": "IEV",
+                    "destination": "JFK",
                     "date": moment().format('YYYY-MM-DD')
                 }
             ],
