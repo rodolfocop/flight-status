@@ -46,7 +46,10 @@ export class FlightSearchFormComponent {
     }
 
     public setSolutions(input:HTMLInputElement) {
-        this.tripRequest.request.solutions = parseInt(input.value, 10);
+        let solutions = parseInt(input.value, 10);
+        if (solutions) {
+            this.tripRequest.request.solutions = solutions;
+        }
     }
 
     public search() {

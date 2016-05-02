@@ -1,43 +1,64 @@
 <div class="row">
-    <form>
+    <form #flightSearch="ngForm">
         <div class="col-sm-3">
             <fieldset class="form-group">
                 <label>From</label>
-                <input #originInput
-                       (change)="setOrigin(originInput.value)"
-                       [value]="getOrigin()"
+                <input #origin="ngForm"
+                       ngControl="origin"
+                       required
+                       pattern="[A-Z]{3}"
+                       (change)="setOrigin(origin.value)"
                        placeholder="Airport code" type="text" class="form-control">
+                <div [hidden]="origin.valid || origin.pristine" class="alert alert-danger">
+                    Origin is invalid
+                </div>
             </fieldset>
         </div>
         <div class="col-sm-3">
             <fieldset class="form-group">
                 <label>To</label>
-                <input #destinationInput
-                       (change)="setDestination(destinationInput.value)"
-                       [value]="getDestination()"
+                <input #destination="ngForm"
+                       ngControl="destination"
+                       required
+                       pattern="[A-Z]{3}"
+                       (change)="setDestination(destination.value)"
                        placeholder="Airport code" type="text" class="form-control">
+                <div [hidden]="destination.valid || destination.pristine" class="alert alert-danger">
+                    Destination is invalid
+                </div>
             </fieldset>
         </div>
         <div class="col-sm-3">
             <fieldset class="form-group">
                 <label>When</label>
-                <input #dateInput
-                       (change)="setDate(dateInput.value)"
+                <input #date="ngForm"
+                       ngControl="date"
+                       required
+                       pattern="\d{4}\-\d{2}\-\d{2}"
+                       (change)="setDate(date.value)"
                        [value]="getCurrentDate()"
                        placeholder="Date" type="date" class="form-control">
+                <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+                    Date is invalid
+                </div>
             </fieldset>
         </div>
         <div class="col-sm-1">
             <fieldset class="form-group">
                 <label>Solutions</label>
-                <input #solutionsInput
-                       (change)="setSolutions(solutionsInput)"
-                       [value]="getSolutions()"
+                <input #solutions="ngForm"
+                       ngControl="solutions"
+                       required
+                       pattern="\d+"
+                       (change)="setSolutions(solutions)"
                        placeholder="Qty." type="text" class="form-control">
+                <div [hidden]="solutions.valid || solutions.pristine" class="alert alert-danger">
+                    Solutions quantity invalid
+                </div>
             </fieldset>
         </div>
         <div class="col-sm-2">
-            <button (click)="search()" type="button" class="search btn btn-default">Search</button>
+            <button [disabled]="!flightSearch.form.valid" (click)="search()" type="button" class="search btn btn-primary">Search</button>
         </div>
     </form>
 </div>
