@@ -49,20 +49,6 @@
             </tr>
             </tbody>
         </table>
-        <!--<div>-->
-        <!--<span>Sort by: </span>-->
-        <!--</div>-->
-        <!--<div class="option" *ngFor="#tripOption of result.trips.tripOption | sortBy: sortType:sortOrder; #i = index">-->
-
-        <!--<div>Sale total: {{tripOption.saleTotal}}</div>-->
-
-        <!--<div *ngFor="#slice of tripOption.slice; #i = index">-->
-        <!--<div>Duration: {{slice.duration}}</div>-->
-        <!--<div class="row">-->
-
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
     </div>
     <div *ngIf="result && !result.trips.tripOption">Sorry, no trips found...</div>
     <div *ngIf="error" class="alert alert-danger">{{error.message}}</div>
