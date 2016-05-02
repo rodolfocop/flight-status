@@ -1,49 +1,70 @@
 <div class="flight-search-result">
-    <div *ngIf="result">
-        <div class="option" *ngFor="#tripOption of result.trips.tripOption; #i = index">
-
-            <h2>Option #{{i + 1}}:</h2>
-            <div>Sale total: {{tripOption.saleTotal}}</div>
-
-            <div *ngFor="#slice of tripOption.slice; #i = index">
-                <div>Duration: {{slice.duration}}</div>
-                <div class="row">
-                    <div *ngFor="#segment of slice.segment; #i = index"
-                         class="col-sm-4">
-                        <h4>Segment #{{i + 1}}:</h4>
-                        <div>Duration: {{segment.duration}}</div>
-                        <div>Flight: {{parseData(result.trips.data.carrier, segment.flight.carrier)}}
-                            (#{{segment.flight.number}})
-                        </div>
-                        <div>Cabin: {{segment.cabin}}</div>
-                        <!--<div>Booking Code: {{segment.bookingCode}} ({{segment.bookingCodeCount}})</div>-->
-                        <div *ngFor="#leg of segment.leg; #i = index">
-                            <h5>Leg #{{i + 1}}</h5>
-                            <div>Aircraft: {{parseData(result.trips.data.aircraft, leg.aircraft)}}</div>
-                            <div>Arrival time: {{leg.arrivalTime}}</div>
-                            <div>Departure time: {{leg.departureTime}}</div>
-                            <div>Origin: {{leg.origin}}, Destination: {{leg.destination}}</div>
-                            <div>Duration: {{leg.duration}}</div>
-                            <div>Mileage: {{leg.mileage}}</div>
-                            <div>Meal: {{leg.meal}}</div>
+    <div *ngIf="result && result.trips.tripOption">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th><a (click)="sortBy('price')">Price</a></th>
+                <th><a (click)="sortBy('duration')">Duration</a></th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="#tripOption of result.trips.tripOption | sortBy: sortType:sortOrder">
+                <td>{{tripOption.saleTotal}}</td>
+                <td>{{tripOption.slice[0].duration}}</td>
+                <td>
+                    <div class="row">
+                        <div *ngFor="#segment of tripOption.slice[0].segment; #i = index" class="col-sm-4">
+                            <div>Duration: {{segment.duration}}</div>
+                            <div>Flight: {{parseData(result.trips.data.carrier, segment.flight.carrier)}}
+                                (#{{segment.flight.number}})
+                            </div>
+                            <div>Cabin: {{segment.cabin}}</div>
+                            <div *ngFor="#leg of segment.leg; #i = index">
+                                <h5>Leg #{{i + 1}}</h5>
+                                <div>Aircraft: {{parseData(result.trips.data.aircraft, leg.aircraft)}}</div>
+                                <div>Arrival time: {{leg.arrivalTime}}</div>
+                                <div>Departure time: {{leg.departureTime}}</div>
+                                <div>Origin: {{leg.origin}}, Destination: {{leg.destination}}</div>
+                                <div>Duration: {{leg.duration}}</div>
+                                <div>Mileage: {{leg.mileage}}</div>
+                                <div>Meal: {{leg.meal}}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div *ngFor="#pricing of tripOption.pricing; #i = index">
-                <h3>Pricing:</h3>
-                <div class="row">
-                    <div *ngFor="#fare of pricing.fare; #i = index"
-                         class="col-sm-4">
-                        <h4>Fare #{{i + 1}}</h4>
-                        <div>Carrier: {{parseData(result.trips.data.carrier ,fare.carrier)}}</div>
-                        <div>Origin: {{fare.origin}}, Destination: {{fare.destination}}</div>
-                        <div>Basis code: {{fare.basisCode}}</div>
+                    <div class="row">
+                        <div *ngFor="#pricing of tripOption.pricing; #i = index" class="col-sm-12">
+                            <hr>
+                            <strong>Pricing:</strong>
+                            <div class="row">
+                                <div *ngFor="#fare of pricing.fare; #i = index" class="col-sm-4">
+                                    <div>Carrier: {{parseData(result.trips.data.carrier ,fare.carrier)}}</div>
+                                    <div>Origin: {{fare.origin}}, Destination: {{fare.destination}}</div>
+                                    <div>Basis code: {{fare.basisCode}}</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!--<div>-->
+        <!--<span>Sort by: </span>-->
+        <!--</div>-->
+        <!--<div class="option" *ngFor="#tripOption of result.trips.tripOption | sortBy: sortType:sortOrder; #i = index">-->
+
+        <!--<div>Sale total: {{tripOption.saleTotal}}</div>-->
+
+        <!--<div *ngFor="#slice of tripOption.slice; #i = index">-->
+        <!--<div>Duration: {{slice.duration}}</div>-->
+        <!--<div class="row">-->
+
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
     </div>
+    <div *ngIf="result && !result.trips.tripOption">Sorry, no trips found...</div>
     <div *ngIf="error" class="alert alert-danger">{{error.message}}</div>
     <div *ngIf="result === null && error === null" class="loader">Loading...</div>
 </div>

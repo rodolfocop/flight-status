@@ -23,7 +23,7 @@ export class FlightSearchComponent {
                 {
                     "origin": "IEV",
                     "destination": "JFK",
-                    "date": moment().format('YYYY-MM-DD')
+                    "date": moment().add(1, 'day').format('YYYY-MM-DD')
                 }
             ],
             "passengers": {
