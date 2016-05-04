@@ -6,8 +6,7 @@ import {FlightSearchComponent} from './flight-search.component/flight-search.com
     directives: [
         [FlightSearchComponent]
     ],
-    templateUrl: 'app/app.component/app.component.html',
-    styleUrls: ['app/app.component/app.component.css']
+    template: require('./app.component.html'),
 })
 
 export class AppComponent {
