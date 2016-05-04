@@ -23,8 +23,8 @@
                             <div *ngFor="#leg of segment.leg; #i = index">
                                 <hr>
                                 <div>Aircraft: {{parse(result.trips.data.aircraft, leg.aircraft)}}</div>
-                                <div>Arrival time: {{toDate(leg.arrivalTime) | date:'yMMMd Hm'}}</div>
                                 <div>Departure time: {{toDate(leg.departureTime) | date:'yMMMd Hm'}}</div>
+                                <div>Arrival time: {{toDate(leg.arrivalTime) | date:'yMMMd Hm'}}</div>
                                 <div>Origin: {{leg.origin}}, Destination: {{leg.destination}}</div>
                                 <div>Duration: {{leg.duration}}</div>
                                 <div>Mileage: {{leg.mileage}}</div>
