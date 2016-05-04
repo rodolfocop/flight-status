@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from 'angular2/core';
 
 @Pipe({
     name: 'sortBy',
-    pure: false
+    pure: true
 })
 export class SortPipe implements PipeTransform {
     public transform(tripOption:any, args:any[]):any {

@@ -25,7 +25,7 @@ export class FlightSearchResultComponent {
         return new Date(s);
     }
 
-    parseData(origin:Array<any>, value:any) {
+    public parse(origin:Array<any>, value:any) {
         return origin.find((elem) => elem.code === value).name;
     }
 }
