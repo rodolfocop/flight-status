@@ -1,4 +1,4 @@
-import moment from 'moment';
+import * as moment from 'moment';
 import {Component} from 'angular2/core';
 
 import {TripRequest} from "../trip-request.interface/trip-request.interface";

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit, Pipe, PipeTransform} from 'angular2/core';
 import {SortPipe} from "./sort-by.pipe/sort-by.pipe";
-import moment from 'moment';
 
 @Component({
     selector: 'flight-search-result',

@@ -1,5 +1,4 @@
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
-import moment from 'moment';
 
 import {FlightSearchResultComponent} from "../flight-search-result.component/flight-search-result.component";
 import {QpxService} from "./qpx.service/qpx.service";
@@ -37,9 +36,5 @@ export class FlightSearchFormComponent {
                     this.searchEmitter.emit(null);
                 }
             );
-    }
-
-    public getCurrentDate() {
-        return moment().format('YYYY-MM-DD');
     }
 }
