@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
 import {FlightSearchResultComponent} from "../flight-search-result.component/flight-search-result.component";
 import {QpxService} from "./qpx.service/qpx.service";

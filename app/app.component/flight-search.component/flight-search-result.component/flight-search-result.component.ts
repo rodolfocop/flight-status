@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Pipe, PipeTransform} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {SortPipe} from "./sort-by.pipe/sort-by.pipe";
 
 @Component({
