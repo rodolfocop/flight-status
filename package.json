@@ -21,10 +21,15 @@
   "devDependencies": {
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.9",
     "typings": "^0.7.9",
-    "url-loader": "^0.5.7"
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
   }
 }

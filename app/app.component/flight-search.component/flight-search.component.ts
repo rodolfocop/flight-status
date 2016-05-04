@@ -9,7 +9,6 @@ import {TripResponse} from "../trip-response.interface/trip-response.interface";
 @Component({
     selector: 'flight-search',
     templateUrl: 'app/app.component/flight-search.component/flight-search.component.html',
-    styleUrls: ['app/app.component/flight-search.component/flight-search.component.css'],
     directives: [
         [FlightSearchFormComponent, FlightSearchResultComponent]
     ],

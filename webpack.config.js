@@ -8,7 +8,7 @@ module.exports = {
         path: __dirname + "/dist", publicPath: 'dist/', filename: "[name].bundle.js"
     },
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: ['', '.js', '.ts', '.less', '.html']
     },
     module: {
         loaders: [
@@ -24,6 +24,16 @@ module.exports = {
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg)$/,
                 loader: 'url-loader?limit=100000'
+            },
+            {
+                test: /\.less$/,
+                loader: 'raw!less',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.html$/,
+                loader: 'raw',
+                exclude: /node_modules/
             }
         ]
     }

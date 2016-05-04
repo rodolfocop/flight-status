@@ -5,11 +5,10 @@ import {QpxService} from "./qpx.service/qpx.service";
 import {TripRequest} from "../../trip-request.interface/trip-request.interface";
 import {TripResponse} from "../../trip-response.interface/trip-response.interface";
 
-
 @Component({
     selector: 'flight-search-form',
-    templateUrl: 'app/app.component/flight-search.component/flight-search-form.component/flight-search-form.component.html',
-    styleUrls: ['app/app.component/flight-search.component/flight-search-form.component/flight-search-form.component.css'],
+    template: require('./flight-search-form.component.html'),
+    styles: [require('./flight-search-form.component.less')],
     directives: [[FlightSearchResultComponent]],
     providers: [QpxService]
 })

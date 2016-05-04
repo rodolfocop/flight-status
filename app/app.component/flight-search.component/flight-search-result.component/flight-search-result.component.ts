@@ -3,8 +3,8 @@ import {SortPipe} from "./sort-by.pipe/sort-by.pipe";
 
 @Component({
     selector: 'flight-search-result',
-    templateUrl: 'app/app.component/flight-search.component/flight-search-result.component/flight-search-result.component.html',
-    styleUrls: ['app/app.component/flight-search.component/flight-search-result.component/flight-search-result.component.css'],
+    template: require('./flight-search-result.component.html'),
+    styles: [require('./flight-search-result.component.less')],
     pipes: [[SortPipe]]
 })
 export class FlightSearchResultComponent {
