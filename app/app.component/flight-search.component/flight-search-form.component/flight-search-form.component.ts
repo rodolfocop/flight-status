@@ -4,12 +4,13 @@ import {FlightSearchResultComponent} from "../flight-search-result.component/fli
 import {QpxService} from "./qpx.service/qpx.service";
 import {TripRequest} from "../../trip-request.interface/trip-request.interface";
 import {TripResponse} from "../../trip-response.interface/trip-response.interface";
+import {TypeaheadDirective} from "./typeahead.directive/typeahead.directive";
 
 @Component({
     selector: 'flight-search-form',
     template: require('./flight-search-form.component.html'),
     styles: [require('./flight-search-form.component.less')],
-    directives: [[FlightSearchResultComponent]],
+    directives: [TypeaheadDirective, [FlightSearchResultComponent]],
     providers: [QpxService]
 })
 export class FlightSearchFormComponent {

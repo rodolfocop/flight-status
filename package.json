@@ -16,9 +16,7 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
     "systemjs": "^0.19.27",
-    "zone.js": "0.6.6"
-  },
-  "devDependencies": {
+    "zone.js": "0.6.6",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
     "less": "^2.6.1",
@@ -31,5 +29,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
   }
 }

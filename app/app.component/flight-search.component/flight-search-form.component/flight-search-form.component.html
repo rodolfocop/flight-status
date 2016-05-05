@@ -5,11 +5,12 @@
                 <label>From</label>
                 <input #origin="ngForm"
                        [(ngModel)]="tripRequest.request.slice[0].origin"
+                       [typeahead]="origin"
                        ngControl="origin"
                        required
                        pattern="[A-Z]{3}"
                        placeholder="Airport code" type="text" class="form-control">
-                <div [hidden]="origin.valid || origin.pristine" class="alert alert-danger">
+                <div [hidden]="!origin.errors" class="alert alert-danger">
                     Origin is invalid
                 </div>
             </fieldset>
@@ -19,11 +20,12 @@
                 <label>To</label>
                 <input #destination="ngForm"
                        [(ngModel)]="tripRequest.request.slice[0].destination"
+                       [typeahead]="destination"
                        ngControl="destination"
                        required
                        pattern="[A-Z]{3}"
                        placeholder="Airport code" type="text" class="form-control">
-                <div [hidden]="destination.valid || destination.pristine" class="alert alert-danger">
+                <div [hidden]="!destination.errors" class="alert alert-danger">
                     Destination is invalid
                 </div>
             </fieldset>
@@ -37,7 +39,7 @@
                        required
                        pattern="\d{4}\-\d{2}\-\d{2}"
                        placeholder="Date" type="date" class="form-control">
-                <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+                <div [hidden]="!date.errors" class="alert alert-danger">
                     Date is invalid
                 </div>
             </fieldset>
@@ -51,7 +53,7 @@
                        required
                        pattern="\d+"
                        placeholder="Qty." type="text" class="form-control">
-                <div [hidden]="solutions.valid || solutions.pristine" class="alert alert-danger">
+                <div [hidden]="!solutions.errors" class="alert alert-danger">
                     Solutions quantity invalid
                 </div>
             </fieldset>
