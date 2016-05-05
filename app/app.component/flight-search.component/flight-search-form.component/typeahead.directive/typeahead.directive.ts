@@ -33,8 +33,6 @@ export class TypeaheadDirective implements OnInit {
                     (error) => console.error(error)
                 )
             });
-
-        console.log(this.input);
     }
 
     public setCode(data:any) {

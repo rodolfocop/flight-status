@@ -50,7 +50,7 @@
             </tbody>
         </table>
     </div>
-    <div *ngIf="result && !result.trips.tripOption">Sorry, no trips found...</div>
+    <div *ngIf="result && !result.trips.tripOption" class="alert alert-info">Sorry, no trips found...</div>
     <div *ngIf="error" class="alert alert-danger">{{error.message}}</div>
     <div *ngIf="result === null && error === null" class="loader">Loading...</div>
 </div>
