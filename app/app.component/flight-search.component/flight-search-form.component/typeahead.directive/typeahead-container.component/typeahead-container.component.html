@@ -1,0 +1,5 @@
+<div class="results">
+    <div *ngFor="#result of results; #i = index" (click)="select.emit(results[i])" class="result">
+        {{result.code}} ({{result.name}} {{result.city_fullname}})
+    </div>
+</div>
