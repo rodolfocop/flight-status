@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import { localRequest } from '@/lib/local/mode';
 import { natalImage, type DestinationImage } from '@/lib/travel/destination-image';
+import { cleanImageMetadata } from '@/lib/travel/image-metadata';
 import airports from '@/lib/data/airports.json';
 
 const cache = new Map<string, DestinationImage | null>();
-const clean = (value: unknown) => typeof value === 'string' ? value.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').trim().slice(0, 180) : '';
 const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').trim();
 const headers = { 'User-Agent': 'DestinoCertoLocal/1.0 (https://github.com/rodolfocop/flight-status)', Accept: 'application/json' };
 async function wikiJson(url: string) {
@@ -31,7 +31,7 @@ async function findImage(city: string, country: string): Promise<DestinationImag
   const info = await wikiJson(`https://commons.wikimedia.org/w/api.php?${params}`);
   const page = Object.values(info.query?.pages || {})[0] as { imageinfo?: Array<{ descriptionurl?: string; extmetadata?: Record<string, {value?: string}> }> } | undefined;
   const image = page?.imageinfo?.[0], metadata = image?.extmetadata;
-  const license = clean(metadata?.LicenseShortName?.value), credit = clean(metadata?.Artist?.value);
+  const license = cleanImageMetadata(metadata?.LicenseShortName?.value), credit = cleanImageMetadata(metadata?.Artist?.value);
   if (!credit || !/^(CC BY(?:-SA)?(?: [0-9.]+)?|CC0|Public domain|PD)$/i.test(license) || !image?.descriptionurl) return null;
   const rawLicense = metadata?.LicenseUrl?.value || (/^CC0$/i.test(license) ? 'https://creativecommons.org/publicdomain/zero/1.0/' : '');
   if (!rawLicense) return null;
