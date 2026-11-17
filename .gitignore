@@ -1,5 +1,22 @@
 .idea
 
+/docs/
+/app/visual-preview/
+.destino-certo/
+/.agents/
+/.claude/
+/.impeccable/
+/skills-lock.json
+
+.env*
+!.env.example
+.dev.vars*
+.next/
+.open-next/
+.wrangler/
+coverage/
+*.tsbuildinfo
+
 node_modules
 dist
 typings

@@ -1,0 +1,27 @@
+name: Acompanhar preços
+on:
+  schedule:
+    - cron: '17 12 * * *'
+  workflow_dispatch:
+permissions: {}
+concurrency:
+  group: monitoramento
+  cancel-in-progress: false
+jobs:
+  monitor:
+    if: vars.ENABLE_CLOUD_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar pesquisas ativas
+        env:
+          APP_URL: ${{ vars.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          test -n "$APP_URL" && test -n "$CRON_SECRET"
+          for batch in $(seq 1 14); do
+            response=$(curl --fail --silent --show-error --max-time 300 -X POST -H "Authorization: Bearer $CRON_SECRET" "$APP_URL/api/cron")
+            printf '%s\n' "$response"
+            if [ "$(printf '%s' "$response" | jq -r '.quotaStopped')" = true ] || [ "$(printf '%s' "$response" | jq -r '.attempted')" -lt 3 ]; then
+              break
+            fi
+          done

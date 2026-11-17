@@ -1,0 +1,9 @@
+{
+  "name": "flight-status",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-04-01",
+  "keep_vars": true,
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "observability": { "enabled": true }
+}

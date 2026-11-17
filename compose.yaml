@@ -1,0 +1,13 @@
+services:
+  destino-certo:
+    build: .
+    ports:
+      - "127.0.0.1:3013:3013"
+    volumes:
+      - destino-data:/app/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  destino-data:

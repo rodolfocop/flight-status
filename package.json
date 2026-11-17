@@ -1,35 +1,45 @@
 {
-  "name": "flight-status",
+  "name": "destino-certo",
   "version": "1.0.0",
-  "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
-    "typings": "typings",
-    "postinstall": "typings install"
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
   },
-  "license": "ISC",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare deploy",
+    "local": "node scripts/local.mjs",
+    "mcp": "node --import tsx scripts/mcp.ts"
+  },
   "dependencies": {
-    "angular2": "2.0.0-beta.12",
-    "bootstrap": "^3.3.6",
-    "es6-shim": "^0.35.0",
-    "moment": "^2.12.0",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "systemjs": "^0.19.27",
-    "zone.js": "0.6.6",
-    "css-loader": "^0.23.1",
-    "file-loader": "^0.8.5",
-    "less": "^2.6.1",
-    "less-loader": "^2.2.3",
-    "raw-loader": "^0.5.1",
-    "style-loader": "^0.13.1",
-    "ts-loader": "^0.8.2",
-    "typescript": "^1.8.9",
-    "typings": "^0.7.9",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.119.0",
+    "lucide-react": "1.73.0",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "server-only": "0.0.1",
+    "zod": "4.6.7"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "1.20.17",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.4.6",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.0",
+    "wrangler": "4.162.0"
   }
 }

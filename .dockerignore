@@ -1,0 +1,15 @@
+.git
+.agents
+.claude
+.impeccable
+.destino-certo
+.env*
+.dev.vars*
+.next
+.open-next
+.wrangler
+node_modules
+docs
+coverage
+dist
+*.tsbuildinfo
