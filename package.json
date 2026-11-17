@@ -41,5 +41,10 @@
     "tsx": "^4.0.0",
     "typescript": "^5.9.0",
     "wrangler": "4.162.0"
+  },
+  "overrides": {
+    "@opennextjs/cloudflare": {
+      "glob": "^14.0.6"
+    }
   }
 }
