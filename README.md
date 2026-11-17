@@ -2,6 +2,15 @@
 
 Aplicativo para pesquisar passagens e hospedagens, salvar resultados e acompanhar preços no computador. Os preços e a disponibilidade são fornecidos por serviços externos; as reservas são concluídas nos sites dos fornecedores.
 
+## Obter o projeto
+
+Com o [Git](https://git-scm.com/downloads) instalado, clone o repositório público e entre na pasta:
+
+```bash
+git clone https://github.com/rodolfocop/flight-status.git
+cd flight-status
+```
+
 ## Executar com Docker
 
 Instale o [Docker Desktop](https://www.docker.com/products/docker-desktop/) ou o Docker Engine com Compose. No terminal, dentro da pasta do projeto, execute:
